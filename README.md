@@ -3,41 +3,34 @@
 #include <string>
 using namespace std;
 
-// Function to check whether username already exists in file
+
 bool usernameExists(string username) {
-    ifstream file("users.txt");   // Open file in read mode
+    ifstream file("users.txt");   
     string u, p;
-      // Read username and password from file
+    
     while (file >> u >> p) {
         if (u == username) {
-            return true;          // Username found
+            return true;         
         }
     }
     return false;                 // Username not found
 }
-// Function to register a new user
 void registerUser() {
     string username, password;
 
     cout << "Enter Username: ";
     cin >> username;
-
-    // Check if username already exists
     if (usernameExists(username)) {
         cout << "Username already exists!\n";
-        return;   // Stop registration
+        return;   
     }
     cout << "Enter Password: ";
     cin >> password;
-
-    // Open file in append mode to add new user
     ofstream file("users.txt", ios::app);
     file << username << " " << password << endl;
 
     cout << "Registration Successful!\n";
 }
-
-// Function to login an existing user
 void loginUser() {
     string username, password;
     string u, p;
@@ -48,8 +41,8 @@ void loginUser() {
     cout << "Enter Password: ";
     cin >> password;
 
-    ifstream file("users.txt");   // Open file in read mode
-        // Check credentials
+    ifstream file("users.txt");   
+    
     while (file >> u >> p) {
         if (u == username && p == password) {
             cout << "Login Successful!\n";
@@ -88,4 +81,3 @@ int main() {
     } while (choice != 3);
 
     return 0;
-    
