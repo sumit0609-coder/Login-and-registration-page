@@ -1,5 +1,3 @@
-# Login-and-registration-page
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -9,8 +7,7 @@ using namespace std;
 bool usernameExists(string username) {
     ifstream file("users.txt");   // Open file in read mode
     string u, p;
-
-    // Read username and password from file
+      // Read username and password from file
     while (file >> u >> p) {
         if (u == username) {
             return true;          // Username found
@@ -18,7 +15,6 @@ bool usernameExists(string username) {
     }
     return false;                 // Username not found
 }
-
 // Function to register a new user
 void registerUser() {
     string username, password;
@@ -31,7 +27,6 @@ void registerUser() {
         cout << "Username already exists!\n";
         return;   // Stop registration
     }
-
     cout << "Enter Password: ";
     cin >> password;
 
@@ -54,8 +49,7 @@ void loginUser() {
     cin >> password;
 
     ifstream file("users.txt");   // Open file in read mode
-
-    // Check credentials
+        // Check credentials
     while (file >> u >> p) {
         if (u == username && p == password) {
             cout << "Login Successful!\n";
@@ -66,7 +60,6 @@ void loginUser() {
     cout << "Invalid Username or Password!\n";
 }
 
-// Main function (Menu Driven Program)
 int main() {
     int choice;
 
@@ -95,4 +88,4 @@ int main() {
     } while (choice != 3);
 
     return 0;
-}
+    
